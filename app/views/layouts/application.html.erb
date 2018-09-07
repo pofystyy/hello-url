@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <%= link_to "New Link", new_hello_path, class: "btn btn-outline-primary pull-xs-right" %>
+    <%= link_to "All Links", hellos_path, class: "btn btn-outline-primary pull-xs-right" %>
     <%= yield %>
   </body>
 </html>
