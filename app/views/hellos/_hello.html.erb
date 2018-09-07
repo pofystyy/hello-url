@@ -1,0 +1,16 @@
+<article class="link">
+
+	<section class="link-head">
+		<small>
+			<%= link_to 'Edit', edit_hello_path(hello) %>
+			|
+			<%= link_to 'Delete', hello_path(hello), method: :delete, data: { confirm: 'Are you chure ?' } %>
+		</small>
+	</section>
+
+	<section class="link-body">
+		<h2><%= link_to hello.summary, hello_path(hello) %></h2>
+		<code><%= link_to hello.url, hello.url, target: "_blank" %></code>
+	</section>
+		
+</article>
