@@ -13,4 +13,7 @@
 		<code><%= link_to hello.url, hello.url, target: "_blank" %></code>
 	</section>
 		
+	<section class="footer-summary">
+		<%= raw hello.tags.map(&:name).map{ |t| link_to "##{t}", tag_path(t), class: 'badge badge-primary' }.join(' ') %>
+	</section>
 </article>

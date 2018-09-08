@@ -44,6 +44,6 @@ class HellosController < ApplicationController
 	end
 
 	def hello_params
-		params.require(:hello).permit(:url, :summary)
+		params.require(:hello).permit(:url, :summary, :all_tags)
 	end
 end
