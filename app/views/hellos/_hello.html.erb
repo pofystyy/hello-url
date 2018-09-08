@@ -10,7 +10,7 @@
 
 	<section class="link-body">
 		<h2><%= link_to hello.summary, hello_path(hello) %></h2>
-		<code><%= link_to hello.url, hello.url, target: "_blank" %></code>
+		<code><%= link_to hello.url, to_url(hello.url), target: "_blank" %></code>
 	</section>
 		
 	<section class="footer-summary">
