@@ -27,6 +27,16 @@
         <div class="col-md-9">
           <%= yield %>
         </div>
+        <div class="col-md-3">
+          <h3>My Tags:</h3>
+          <% (Tag.all).each do |tag| %>
+           <li>
+            <ul>
+              <%= link_to "##{tag.name}", tag_path(tag.name) %>
+            </ul>
+          <% end %>   
+        </li>
+        </div>
       </div>
     </div>
   </body>
