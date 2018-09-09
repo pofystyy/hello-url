@@ -1,4 +1,5 @@
 class HellosController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_hello, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -9,11 +10,11 @@ class HellosController < ApplicationController
 	end
 
 	def new
-		@hello = Hello.new		
+		@hello = current_user.hellos.new	
 	end
 
 	def create
-		@hello = Hello.new(hello_params)
+		@hello = current_user.hellos.new(hello_params)
 		if @hello.save
 			redirect_to @hello, success: 'Hello successfully created'
 		else

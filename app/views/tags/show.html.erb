@@ -2,6 +2,7 @@
 
 <% if @tag.hellos.empty? %>
 	<h2>Tag is missing</h2>
+	<% @tag.hellos.destroy %>
 <% else %>
 	<%= render @tag.hellos %>
 <% end %>
