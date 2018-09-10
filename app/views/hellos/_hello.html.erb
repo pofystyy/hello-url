@@ -2,10 +2,16 @@
 
 	<section class="link-head">
 		<small>
-			<%= link_to 'Edit', edit_hello_path(hello) %>
-			|
-			<%= link_to 'Delete', hello_path(hello), method: :delete, data: { confirm: 'Are you chure ?' } %>
+			<%= hello.user.email %>
+			<% if hello.user == current_user %>			
+				|					
+				<%= link_to 'Edit', edit_hello_path(hello) %>
+				|
+				<%= link_to 'Delete', hello_path(hello), method: :delete, data: { confirm: 'Are you chure ?' } %>
+			<% end %>
 		</small>
+	</section>
+	<section>
 	</section>
 
 	<section class="link-body">

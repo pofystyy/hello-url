@@ -3,7 +3,8 @@ class Hello
   field :url, type: String
   field :summary, type: String
 
-  has_and_belongs_to_many :tags 
+  has_and_belongs_to_many :tags #, dependent: :destroy 
+  belongs_to :user
 
   validates_presence_of :url, :summary
 

@@ -10,13 +10,14 @@
   </head>
 
   <body>
-   <%= render 'navbar' %>
+   <%= render 'partials/navbar' %>
 
     <div class="container main">      
       <div class="row">
         <div class="col-md-12">
           <% flash.each do |name, message| %>
-            <div class="alert alert-<%= name %>">
+            <div class="alert bootstrap_class_for(name)">
+              <button class="close" data-dismiss="alert">&times;</button>
               <%= message %>
             </div>
           <% end %>
@@ -28,13 +29,10 @@
           <%= yield %>
         </div>
         <div class="col-md-3">
-          <h3>My Tags:</h3>
-          <% (Tag.all).each do |tag| %>
-           <li>
-            <ul>
-              <%= link_to "##{tag.name}", tag_path(tag.name) %>
-            </ul>
-          <% end %>   
+          <% if user_signed_in? %>
+            <h2>My Tags:</h2>
+            <%= render "/hellos/hello_tags" %>
+          <% end %>       
         </li>
         </div>
       </div>
