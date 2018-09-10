@@ -1,5 +1,11 @@
 class User
   include Mongoid::Document
+  extend Devise::Models
+  has_many :hellos
+  #field :name
+  #validates_presence_of :name
+  #validates_uniqueness_of :email, :case_sensitive => false
+  #attr_accessor :email, :password, :password_confirmation, :remember_me
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

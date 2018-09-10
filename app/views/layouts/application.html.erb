@@ -29,13 +29,10 @@
           <%= yield %>
         </div>
         <div class="col-md-3">
-          <h3>My Tags:</h3>
-          <% (Tag.all).each do |tag| %>
-           <li>
-            <ul>
-              <%= link_to "##{tag.name}", tag_path(tag.name) %>
-            </ul>
-          <% end %>   
+          <% if user_signed_in? %>
+            <h2>My Tags:</h2>
+            <%= render "/hellos/hello_tags" %>
+          <% end %>       
         </li>
         </div>
       </div>

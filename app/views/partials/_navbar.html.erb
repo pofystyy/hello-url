@@ -7,12 +7,18 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav pull-xs-right">
-        <% if user_signed_in? %>
+        <% if user_signed_in? %>          
+          <li class="nav-item">
+            <li><%= link_to 'My Links', my_links_hellos_path,  class: "nav-link" %></li>
+          </li>
           <li class="nav-item">
             <%= link_to "New Link", new_hello_path, class: "btn btn-outline-primary pull-xs-right" %>
           </li>
           <li class="nav-item">
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <li class="nav-link"><%= current_user.email %></li>
           </li>
           <% else %>
           <li class="nav-item">
@@ -20,7 +26,7 @@
           </li>
           <li class="nav-item">
             <%= link_to 'Sign Up', new_user_registration_path,  class: "nav-link" %>
-          </li>
+          </li>          
         <% end %>
       </ul>      
     </div>

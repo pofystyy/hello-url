@@ -10,11 +10,13 @@ class HellosController < ApplicationController
 	end
 
 	def new
-		@hello = current_user.hellos.new	
+		@hello = Hello.new	
+		@hello.user = current_user	
 	end
 
 	def create
-		@hello = current_user.hellos.new(hello_params)
+		@hello = Hello.new(hello_params)
+		@hello.user = current_user	
 		if @hello.save
 			redirect_to @hello, success: 'Hello successfully created'
 		else
@@ -37,6 +39,10 @@ class HellosController < ApplicationController
 			@hello.destroy
 			redirect_to hellos_path, success: 'Hello successfully deleted'
 	end
+
+	def my_links
+ 		@links = Hello.where(user_id: current_user.id) 		
+ 	end
 
 	private
 

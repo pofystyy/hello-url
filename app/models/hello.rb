@@ -2,9 +2,9 @@ class Hello
   include Mongoid::Document
   field :url, type: String
   field :summary, type: String
-  field :user_id, type: Integer
 
-  has_and_belongs_to_many :tags #, dependent: :destroy
+  has_and_belongs_to_many :tags #, dependent: :destroy 
+  belongs_to :user
 
   validates_presence_of :url, :summary
 

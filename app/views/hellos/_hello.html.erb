@@ -2,9 +2,9 @@
 
 	<section class="link-head">
 		<small>
-			<% if user_signed_in? %>
-				<%= current_user.email %>
-				|				
+			<%= hello.user.email %>
+			<% if hello.user == current_user %>			
+				|					
 				<%= link_to 'Edit', edit_hello_path(hello) %>
 				|
 				<%= link_to 'Delete', hello_path(hello), method: :delete, data: { confirm: 'Are you chure ?' } %>

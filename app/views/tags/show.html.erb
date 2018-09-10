@@ -1,8 +1,8 @@
-<h1><%= @tag.name %></h1>
 
-<% if @tag.hellos.empty? %>
-	<h2>Tag is missing</h2>
-	<% @tag.hellos.destroy %>
-<% else %>
-	<%= render @tag.hellos %>
-<% end %>
+	<h1><%= @tag.name %></h1>
+
+	<% if @tag.hellos.empty? %>
+		<h2>Tag is missing</h2>
+	<% else %>
+		<%= render @tag.hellos %>
+	<% end %>
