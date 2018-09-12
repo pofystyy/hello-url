@@ -1,7 +1,8 @@
 class HellosController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_hello, only: [:show, :edit, :update, :destroy]
-
+  before_action :delete_tags, only: [:destroy]
+	
 	def index
 		@hellos = Hello.all		
 	end
@@ -37,11 +38,15 @@ class HellosController < ApplicationController
 
 	def destroy
 			@hello.destroy
-			redirect_to hellos_path, success: 'Hello successfully deleted'
+			@tags = @hello.tags
+			if @tags
+				redirect_to hellos_path, success: 'Hello successfully deleted'
+			end
 	end
 
 	def my_links
- 		@links = Hello.where(user_id: current_user.id) 		
+ 		@links = Hello.where(user_id: current_user.id)
+ 		@tags = []
  	end
 
 	private
@@ -53,4 +58,19 @@ class HellosController < ApplicationController
 	def hello_params
 		params.require(:hello).permit(:url, :summary, :all_tags)
 	end
+
+	def find_tags
+		@tags = []
+		@hello.tags.each { |tag| @tags << tag }
+	end
+
+	def delete_tags
+		find_tags
+		@tags.each do |tag|
+			if tag.hellos.count == 1 
+				tag.destroy
+			end
+		end		
+	end
+
 end
