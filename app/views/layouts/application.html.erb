@@ -31,7 +31,9 @@
         <div class="col-md-3">
           <% if user_signed_in? %>
             <h2>My Tags:</h2>
-            <%= render "/hellos/hello_tags" %>
+            <%= render "/hellos/my_tags" %>
+            <h2>All Tags:</h2>
+            <%= render "/hellos/all_tags" %>            
           <% end %>       
         </li>
         </div>
