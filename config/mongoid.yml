@@ -166,7 +166,7 @@ test:
 production:
   clients:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      uri: <%= ENV['MONGOLAB_BROWN_URI'] %>
       options:
         read:
           mode: :primary
