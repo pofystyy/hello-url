@@ -2,6 +2,7 @@ class HellosController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_hello, only: [:show, :edit, :update, :destroy]
   before_action :delete_tags, only: [:destroy]
+	before_action :require_permission, only: :edit
 	
 	def index
 		@hellos = Hello.all		
@@ -71,6 +72,12 @@ class HellosController < ApplicationController
 				tag.destroy
 			end
 		end		
+	end
+
+	def require_permission
+	  if current_user != Hello.find(params[:id]).user
+	    redirect_to root_path
+	  end
 	end
 
 end
