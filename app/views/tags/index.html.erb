@@ -1,11 +1,11 @@
 <% (Tag.all).each do |tag| %>
  <li>
   <ul>
-    	<%= link_to "##{tag.name}", tag_path(tag) %>
-    		<small>
-    			<%= link_to 'Delete', tag_path(tag), method: :delete %>
-    		</small>
-   	</ul>
+  	<%= link_to "##{tag.name}", tag_path(tag) %>
+  		<small>
+  			<%= link_to 'Delete', tag_path(tag), method: :delete %>
+  		</small>
+ 	</ul>
 <% end %> 
 
 
