@@ -1,7 +1,6 @@
 class HellosController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_hello, only: [:show, :edit, :update, :destroy]
-  before_action :delete_tags, only: [:destroy]
 	before_action :require_permission, only: :edit
 	
 	def index
@@ -58,20 +57,6 @@ class HellosController < ApplicationController
 
 	def hello_params
 		params.require(:hello).permit(:url, :summary, :all_tags)
-	end
-
-	def find_tags
-		@tags = []
-		@hello.tags.each { |tag| @tags << tag }
-	end
-
-	def delete_tags
-		find_tags
-		@tags.each do |tag|
-			if tag.hellos.count == 1 
-				tag.destroy
-			end
-		end		
 	end
 
 	def require_permission
