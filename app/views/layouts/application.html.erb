@@ -25,13 +25,11 @@
       </div>
 
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-10">
           <%= yield %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <% if user_signed_in? %>
-            <h2>My Tags:</h2>
-            <%= render "/hellos/my_tags" %>
             <h2>All Tags:</h2>
             <%= render "/hellos/all_tags" %>            
           <% end %>       

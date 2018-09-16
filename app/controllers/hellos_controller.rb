@@ -2,22 +2,23 @@ class HellosController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_hello, only: [:show, :edit, :update, :destroy]
 	before_action :require_permission, only: :edit
-	
+
 	def index
-		@hellos = Hello.all		
+		@hellos = Hello.all
+		@my_hellos = Hello.where(user_id: current_user.id)
 	end
 
 	def show
 	end
 
 	def new
-		@hello = Hello.new	
-		@hello.user = current_user	
+		@hello = Hello.new
+		@hello.user = current_user
 	end
 
 	def create
 		@hello = Hello.new(hello_params)
-		@hello.user = current_user	
+		@hello.user = current_user
 		if @hello.save
 			redirect_to @hello, success: 'Hello successfully created'
 		else
@@ -25,7 +26,7 @@ class HellosController < ApplicationController
 		end
 	end
 
-	def edit		
+	def edit
 	end
 
 	def update
@@ -33,26 +34,32 @@ class HellosController < ApplicationController
 			redirect_to @hello, success: 'Hello successfully updated'
 		else
 			render :edit, danger: 'Hello don`t updated'
-		end		
+		end
 	end
 
 	def destroy
-			@hello.destroy
-			@tags = @hello.tags
-			if @tags
-				redirect_to hellos_path, success: 'Hello successfully deleted'
-			end
+		@hello.destroy
+		@tags = @hello.tags
+		if @tags
+			redirect_to hellos_path, success: 'Hello successfully deleted'
+		end
 	end
 
 	def my_links
  		@links = Hello.where(user_id: current_user.id)
- 		@tags = []
+ 		@my_tags = []
+ 		@links.each do |hello|
+ 			hello.tags.each do |tag|
+ 				@my_tags << tag
+ 			end
+ 		end
+ 		@my_tags.uniq!
  	end
 
 	private
 
 	def set_hello
-		@hello = Hello.find(params[:id])		
+		@hello = Hello.find(params[:id])
 	end
 
 	def hello_params

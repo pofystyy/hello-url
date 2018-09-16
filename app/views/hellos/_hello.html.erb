@@ -11,8 +11,6 @@
 			<% end %>
 		</small>
 	</section>
-	<section>
-	</section>
 
 	<section class="link-body">
 		<p><%= link_to hello.summary, hello_path(hello) %></p>
@@ -20,6 +18,6 @@
 	</section>
 		
 	<section class="footer-summary">
-		<%= raw hello.tags.map(&:name).map{ |t| link_to "##{t}", tag_path(t), class: 'badge badge-primary' }.join(' ') %>
+		<%= raw hello.tags.map{ |tag| link_to "##{tag.name}", tag_path(tag.name), class: 'badge badge-primary' }.join(' ') %>
 	</section>
 </article>
