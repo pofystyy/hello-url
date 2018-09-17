@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-md-12">
           <% flash.each do |name, message| %>
-            <div class="alert bootstrap_class_for(name)">
+            <div class="alert alert-<%= name %>">
               <button class="close" data-dismiss="alert">&times;</button>
               <%= message %>
             </div>
@@ -30,10 +30,9 @@
         </div>
         <div class="col-md-2">
           <% if user_signed_in? %>
-            <h2>All Tags:</h2>
-            <%= render "/hellos/all_tags" %>            
-          <% end %>       
-        </li>
+            <h2>All Tags:</h2> 
+            <%= render "/hellos/all_tags" %>
+          <% end %>
         </div>
       </div>
     </div>

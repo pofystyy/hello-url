@@ -11,7 +11,7 @@ class Hello
   validates_presence_of :url, :summary
 
   def all_tags
-		self.tags.map(&:name).join(', ')	
+		self.tags.map(&:name).join(', ')
 	end
 
 	def all_tags=(names)
@@ -23,7 +23,7 @@ class Hello
   private
 
   def delete_tags
-    self.tags.all.each{ |tag| tag.delete if tag.hellos.count == 1 }  
+    self.tags.each{ |tag| tag.delete if tag.hellos.count == 1 }
   end
 
 end
