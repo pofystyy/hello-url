@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'rails_admin'
 gem 'kaminari-mongoid'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use Puma as the app server

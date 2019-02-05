@@ -1,3 +1,5 @@
 <h1>Link</h1>
 
 <%= render @hello %>
+
+<%= link_to 'Create PDF document', hello_path(@hello, :format => :pdf) %>
